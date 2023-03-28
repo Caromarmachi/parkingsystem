@@ -135,6 +135,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/InteractiveShell.class</exclude>
+                        <exclude>**/App.class</exclude>
                     </excludes>
                 </configuration>                 
                 <executions>

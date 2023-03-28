@@ -2,6 +2,7 @@ package com.parkit.parkingsystem;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -74,6 +75,38 @@ public class ParkingServiceTest {
 		assertEquals(parkingSpotA, parkingSpotB); // on s'assure que le changement de type ne change pas l'egalite
 		parkingSpotA.setId(2);
 		assertNotEquals(parkingSpotA, parkingSpotB); // on verifie qu'ils ne sont plus égaux si on change le nombre
+	}
+	
+	@Test
+	public void testReadSelection() {
+        InputReaderUtil inputReaderUtil2 = new InputReaderUtil(true,1,"ABCDEF");
+		int option = inputReaderUtil2.readSelection();
+		assertTrue(option==1);
+	}
+	
+	@Test
+	public void testReadVehicleRegistrationNumber() {
+        InputReaderUtil inputReaderUtil2 = new InputReaderUtil(true,1,"ABCDEF");
+        String vehiculeNumber = "";
+		try {
+			vehiculeNumber = inputReaderUtil2.readVehicleRegistrationNumber();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertTrue(vehiculeNumber.equals("ABCDEF"));
+	}
+	
+	@Test
+	public void testReadVehicleRegistrationNumberException() {
+        InputReaderUtil inputReaderUtil2 = new InputReaderUtil(true,1,null);
+        String vehiculeNumber = null;
+		try {
+			vehiculeNumber = inputReaderUtil2.readVehicleRegistrationNumber();
+		} catch (Exception e) {
+			System.out.println("Erreur volontaire pour le test. Ignorée.");
+		}
+		assertTrue(vehiculeNumber==null);
+		
 	}
 
 }
