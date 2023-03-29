@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class InputReaderUtil {
 
-    private static Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in,"ISO-8859-1");
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
     private boolean simulation;
     private int input;
@@ -54,7 +54,7 @@ public class InputReaderUtil {
 	            return vehicleRegNumber;
         	}
         }catch(Exception e){
-            logger.error("Error while reading user input from Shell", e);
+          //  logger.error("Error while reading user input from Shell", e);
             System.out.println("Error reading input. Please enter a valid string for vehicle registration number");
             throw e;
         }
